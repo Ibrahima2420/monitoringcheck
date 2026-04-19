@@ -210,7 +210,6 @@ Alerts were tested by simulating real conditions inside the cluster.
 ```bash
 kubectl run stress --image=polinux/stress -- stress --cpu 2 --timeout 120
 ```
-![alert](images/stressproof.png)
 ![alert](images/stressapply.png)
 ![alert](images/stressproof.png)
 

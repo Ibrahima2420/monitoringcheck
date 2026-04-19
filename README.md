@@ -49,7 +49,7 @@ helm install monitoring prometheus-community/kube-prometheus-stack \
 * Accessed Grafana locally using port-forwarding.
 
 ```bash
-kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
+kubectl port-forward svc/monitoring-grafana -n monitoring 3000:3000
 ```
 ![forward](images/forwardgraphana.png)
 ![graphana](images/graphana.png)

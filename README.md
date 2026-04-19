@@ -202,7 +202,7 @@ Alertmanager is included in the kube-prometheus-stack and is responsible for han
 ```bash
 kubectl port-forward svc/monitoring-kube-prometheus-alertmanager -n monitoring 9093:9093
 ```
-![alert](images/alertslist.png)
+![alert](images/alertlist.png)
 
 ### 3. Testing Alerts
 Alerts were tested by simulating real conditions inside the cluster.

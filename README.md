@@ -27,6 +27,7 @@ A hands-on demonstration of building a complete Kubernetes monitoring stack usin
 minikube start
 kubectl create namespace monitoring
 ```
+![initialisation](images/namespace.png)
 ### 2.Prometheus on Kubernetes (EKS) using Helm
 * Added Prometheus Helm repository and updated Helm charts.
 
@@ -34,12 +35,14 @@ kubectl create namespace monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
+![helm](images/helm.png)
 ### 3.Installed Prometheus, Node Exporter, Kube-State-Metrics, Alertmanager, and Grafana using Helm
 * Installed the full monitoring stack using Helm.
 ```bash
 helm install monitoring prometheus-community/kube-prometheus-stack \
   --namespace monitoring
 ```
+![prometheus](prometheusstack.png)
 ## Set up Grafana for Data Visualization
 ### 1. Grafana Access & Configuration
 * Grafana was deployed automatically as part of the kube-prometheus-stack.
@@ -48,11 +51,15 @@ helm install monitoring prometheus-community/kube-prometheus-stack \
 ```bash
 kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 ```
+![forward](forwardgraphana.png)
+![graphana](graphana.png)
 * Password: retrieved via Kubernetes secret
 ```bash
 kubectl get secret --namespace monitoring monitoring-grafana \
   -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
+![password](graphanapass.png)
+
 ### 2. Custom Dashboards Creation
 * Cluster Health Dashboard
 * This dashboard provides an overview of the overall state of the Kubernetes cluster.
@@ -65,6 +72,10 @@ kubectl get secret --namespace monitoring monitoring-grafana \
 | **Running Pods** | `Number of active pods in Running state` |
 
 ---
+![dashbord](dash.png)
+![dashbord](dash2.png)
+![dashbord](dash3.png)
+
 * Storage Monitoring
 * This panel tracks disk utilization across nodes.
 ---
@@ -74,6 +85,8 @@ kubectl get secret --namespace monitoring monitoring-grafana \
 | **Disk Usage** | `Percentage of used storage capacity` |
 
 ---
+![dashbord](dash4.png)
+
 ### 3. Visualization Choices
 
 Different panel types were selected based on the nature of the data:
